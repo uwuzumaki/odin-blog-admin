@@ -5,6 +5,7 @@ const Layout = () => {
     <>
       <nav>
         Nav <Link to="/login">Login</Link>
+        <Link to="/Create">New Post</Link>
       </nav>
       <div>Layout</div>
       <Outlet />
