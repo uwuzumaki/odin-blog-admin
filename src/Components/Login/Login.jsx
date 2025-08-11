@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const {
@@ -8,11 +9,13 @@ const Login = () => {
     // formState: { errors },
     reset,
   } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    const url = `/login`;
+    const url = `http://localhost:3000/login`;
     try {
-      await axios.post(url, data);
+      await axios.post(url, data, { withCredentials: true });
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
