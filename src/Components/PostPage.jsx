@@ -35,7 +35,7 @@ const PostPage = () => {
   }, []);
 
   return (
-    <>
+    <div className="flex-1">
       <p>{location.pathname.split("/")[2]}</p>
       <p>{post.title}</p>
       <p>{post.content}</p>
@@ -46,7 +46,7 @@ const PostPage = () => {
       >
         {visibility ? "Hide" : "Show"}
       </div>
-    </>
+    </div>
   );
 };
 

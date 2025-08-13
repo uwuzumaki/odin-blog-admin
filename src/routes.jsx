@@ -15,11 +15,11 @@ const routes = [
       },
       { path: "/post/:post_id", element: <PostPage /> },
       { path: "/create", element: <Create /> },
+      {
+        path: "login",
+        element: <Login />,
+      },
     ],
-  },
-  {
-    path: "login",
-    element: <Login />,
   },
 ];
 

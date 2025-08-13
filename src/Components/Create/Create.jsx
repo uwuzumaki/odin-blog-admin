@@ -29,7 +29,7 @@ const Create = () => {
   }, [fullPost]);
 
   return (
-    <div>
+    <div className="flex-1">
       <div>
         <div>Title</div>
         <input
