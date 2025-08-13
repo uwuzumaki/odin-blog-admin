@@ -1,14 +1,11 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Footer from "../Footer/Footer";
+import Navbar from "../Navbar/Navbar";
 
 const Layout = () => {
   return (
     <div className="flex flex-1 flex-col">
-      <nav>
-        Nav <Link to="/login">Login</Link>
-        <Link to="/Create">New Post</Link>
-      </nav>
-      <div>Layout</div>
+      <Navbar />
       <Outlet />
       <Footer />
     </div>
