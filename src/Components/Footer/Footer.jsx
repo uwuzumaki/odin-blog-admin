@@ -25,8 +25,6 @@ const Footer = () => {
             stroke-dashoffset="0"
             font-family="none"
             font-weight="none"
-            font-size="none"
-            text-anchor="none"
             style={{ mixBlendMode: "normal" }}
           >
             <g transform="scale(8.53333,8.53333)">
