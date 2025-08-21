@@ -1,51 +1,66 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
+import "./Create.css";
 
 const Create = () => {
   const [post, setPost] = useState("");
-  const [title, setTitle] = useState("");
-  const [fullPost, setFullPost] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    control,
+  } = useForm();
 
-  // const logpost = () => {
-  //   console.log(post);
-  //   console.log(title);
-  // };
-
-  const submitPost = async () => {
-    const url = "http://localhost:3000/post";
-    const data = { title: title, content: post };
-    try {
-      const post = await axios.post(url, data, { withCredentials: true });
-      setFullPost(post);
-    } catch (err) {
-      console.log(err);
-    }
+  const submitPost = async (data) => {
+    // const url = "http://localhost:3000/post";
+    // const data = { title: title, content: post };
+    // try {
+    //   const post = await axios.post(url, data, { withCredentials: true });
+    //   setFullPost(post);
+    // } catch (err) {
+    //   console.log(err);
+    // }
+    console.log(data);
+    console.log(errors);
   };
 
-  useEffect(() => {
-    console.log(fullPost);
-  }, [fullPost]);
-
   return (
-    <div className="flex-1">
-      <div>
-        <div>Title</div>
+    <div className="mx-auto flex w-[80%] flex-1 flex-col justify-center">
+      <form
+        onSubmit={handleSubmit(submitPost)}
+        className="mx-auto flex min-h-[40vh] w-[80%] flex-col rounded border border-blue-400 bg-slate-50 px-4"
+      >
         <input
-          className="focus:outline-none"
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
+          className="my-6 w-full bg-white px-2 focus:outline-none"
+          placeholder="Title"
+          required
+          {...register("title", {
+            required: "Please include a title.",
+            minLength: {
+              value: 10,
+              message: "Title must be at least 10 characters long.",
+            },
+          })}
         ></input>
-      </div>
-      <ReactQuill
-        className="container mx-auto rounded shadow"
-        theme="snow"
-        value={post}
-        onChange={setPost}
-      />
-      {/* <div onClick={logpost}>LogPost</div> */}
-      <div onClick={submitPost}>LogPost</div>
+        <ReactQuill
+          className="flex max-h-1/1 flex-1 flex-col rounded shadow"
+          theme="snow"
+          value={post}
+          onChange={setPost}
+        />
+        {errors.title && (
+          <span className="text-red-500">{errors.title.message}</span>
+        )}
+        <input
+          className="my-4 max-w-full cursor-pointer self-start rounded border border-blue-500 bg-blue-400 px-2 py-1 font-bold text-white"
+          type="submit"
+          value="Create Post"
+        />
+      </form>
     </div>
   );
 };
