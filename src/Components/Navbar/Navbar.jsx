@@ -12,7 +12,15 @@ const Navbar = () => {
           </p>
         </Link>
       </div>
-      <div>
+
+      <div className="flex items-center justify-center">
+        {user ? (
+          <div className="mx-6 flex items-center rounded-4xl border px-4 py-2 text-xl text-blue-400">
+            <div className="mr-4 h-6 w-6 rounded-full bg-blue-400"></div>
+            <p>{user}</p>
+          </div>
+        ) : null}
+
         <Link
           className="m-2 rounded-4xl border border-blue-500 bg-blue-400 px-4 py-2 text-white shadow"
           to="/create"
@@ -23,7 +31,6 @@ const Navbar = () => {
           <Link
             className="m-2 rounded-4xl border px-4 py-2 text-blue-400"
             onClick={logout}
-            to="/login"
           >
             Logout
           </Link>

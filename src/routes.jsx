@@ -24,7 +24,7 @@ const routes = [
       },
       { path: "/create", loader: protectedLoader, element: <Create /> },
       {
-        path: "login",
+        path: "/login",
         element: <Login />,
       },
       {

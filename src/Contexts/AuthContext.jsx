@@ -1,11 +1,13 @@
 import axios from "axios";
 import { createContext, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ initialUser, children }) => {
   const [user, setUser] = useState(initialUser);
   const [authenticated, setAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   const logout = async () => {
     const url = `http://localhost:3000/auth/logout`;
@@ -13,6 +15,7 @@ export const AuthProvider = ({ initialUser, children }) => {
       await axios.get(url, { withCredentials: true });
       setUser(null);
       setAuthenticated(false);
+      navigate("/login");
     } catch (err) {
       console.log(err);
     }
