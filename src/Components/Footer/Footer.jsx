@@ -13,18 +13,18 @@ const Footer = () => {
           viewBox="0,0,256,256"
         >
           <g
-            fill-opacity="0.5098"
+            fillOpacity="0.5098"
             fill="#000000"
-            fill-rule="nonzero"
+            fillRule="nonzero"
             stroke="none"
-            stroke-width="1"
-            stroke-linecap="butt"
-            stroke-linejoin="miter"
-            stroke-miterlimit="10"
-            stroke-dasharray=""
-            stroke-dashoffset="0"
-            font-family="none"
-            font-weight="none"
+            strokeWidth="1"
+            strokeLinecap="butt"
+            strokeLinejoin="miter"
+            strokeMiterlimit="10"
+            strokeDasharray=""
+            strokeDashoffset="0"
+            fontFamily="none"
+            fontWeight="none"
             style={{ mixBlendMode: "normal" }}
           >
             <g transform="scale(8.53333,8.53333)">
