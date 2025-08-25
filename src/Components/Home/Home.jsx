@@ -37,7 +37,7 @@ const Home = () => {
           </div>
           {loading ? (
             <div className="flex flex-1 items-center justify-center">
-              <div class="mr-2 ml-1 h-4 w-4 animate-spin rounded-full border-2 border-blue-400 border-t-transparent"></div>
+              <div className="mr-2 ml-1 h-4 w-4 animate-spin rounded-full border-2 border-blue-400 border-t-transparent"></div>
               <p className="animate-pulse">Loading...</p>
             </div>
           ) : (
