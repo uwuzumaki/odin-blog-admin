@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const authLoader = async () => {
-  const url = "http://localhost:3000/login/verify";
+  const url = "http://localhost:3000/auth/verify";
   try {
     const res = await axios.get(url, { withCredentials: true });
     if (res.statusText == "OK") {
