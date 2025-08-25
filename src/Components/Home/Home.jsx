@@ -34,7 +34,7 @@ const Home = () => {
   return (
     <>
       <div className="flex flex-1 flex-col items-center justify-center">
-        <div className="flex max-h-[40vh] min-h-[40vh] w-[80%] flex-col overflow-y-auto rounded-2xl border border-blue-400 bg-slate-50 shadow shadow-blue-800">
+        <div className="flex max-h-[50vh] min-h-[50vh] w-[80%] flex-col overflow-y-auto rounded-2xl border border-blue-400 bg-slate-50 shadow shadow-blue-800">
           <div className="my-2 flex justify-between border-b-1 border-blue-400 pr-4">
             <div className="flex-1 pl-4 text-2xl font-bold">Title</div>
             <div className="flex flex-1 justify-between">
@@ -69,21 +69,21 @@ const Home = () => {
             </>
           )}
         </div>
-        <div className="mt-4 flex gap-2">
+        <div className="mt-4 flex gap-2 text-2xl">
           <button
             className={`${page.page == 1 ? `cursor-not-allowed` : `cursor-pointer`}`}
             disabled={page.page == 1}
             onClick={() => setSearchParams({ page: page.page - 1 })}
           >
-            Prev
+            &larr;
           </button>
-          <p>{page.page}</p>
+          <p className="mx-1">{page.page}</p>
           <button
             className={`${page.page == page.totalPages ? `cursor-not-allowed` : `cursor-pointer`}`}
             disabled={page.page == page.totalPages}
             onClick={() => setSearchParams({ page: page.page + 1 })}
           >
-            Next
+            &rarr;
           </button>
         </div>
       </div>
