@@ -27,8 +27,8 @@ const Home = () => {
   return (
     <>
       <div className="flex flex-1 flex-col items-center justify-center">
-        <div className="flex min-h-[40vh] w-[80%] flex-col rounded-2xl border border-blue-400 bg-slate-50 shadow shadow-blue-800">
-          <div className="my-2 flex justify-between border-b-1 border-blue-400">
+        <div className="flex max-h-[40vh] min-h-[40vh] w-[80%] flex-col overflow-y-auto rounded-2xl border border-blue-400 bg-slate-50 shadow shadow-blue-800">
+          <div className="my-2 flex justify-between border-b-1 border-blue-400 pr-4">
             <div className="flex-1 pl-4 text-2xl font-bold">Title</div>
             <div className="flex flex-1 justify-between">
               <div className="text-2xl font-bold">Created</div>
@@ -45,7 +45,7 @@ const Home = () => {
               {allPosts.map((post, index) => (
                 <div
                   key={post.id}
-                  className={`flex w-full justify-between py-2 ${index + 1 < allPosts.length ? `border-b-1 border-b-blue-400/30` : ``}`}
+                  className={`flex w-full justify-between py-2 pr-4 ${index + 1 < allPosts.length ? `border-b-1 border-b-blue-400/30` : ``}`}
                 >
                   <Link className="flex-1" to={`/post/${post.id}`}>
                     <p className="pl-4">{post.title}</p>
