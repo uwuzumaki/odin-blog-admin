@@ -1,18 +1,24 @@
 import axios from "axios";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const Home = () => {
   const [allPosts, setAllPosts] = useState([]);
+  const [page, setPage] = useState({ page: 1, totalPages: 1 });
   const [loading, setLoading] = useState(false);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentPage = parseInt(searchParams.get("page") || "1");
+
   const getPosts = async () => {
-    const url = "http://localhost:3000/post";
+    const url = `http://localhost:3000/post?page=${currentPage}`;
     try {
       setLoading(true);
       const posts = await axios.get(url);
-      setAllPosts(posts.data);
+      console.log(posts);
+      setAllPosts(posts.data.posts);
+      setPage({ page: posts.data.page, totalPages: posts.data.totalPages });
     } catch (err) {
       console.log(err);
     } finally {
@@ -22,7 +28,7 @@ const Home = () => {
 
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [currentPage]);
 
   return (
     <>
@@ -61,6 +67,23 @@ const Home = () => {
               ))}
             </>
           )}
+        </div>
+        <div className="mt-4 flex gap-2">
+          <button
+            className={`${page.page == 1 ? `cursor-not-allowed` : `cursor-pointer`}`}
+            disabled={page.page == 1}
+            onClick={() => setSearchParams({ page: page.page - 1 })}
+          >
+            Prev
+          </button>
+          <p>{page.page}</p>
+          <button
+            className={`${page.page == page.totalPages ? `cursor-not-allowed` : `cursor-pointer`}`}
+            disabled={page.page == page.totalPages}
+            onClick={() => setSearchParams({ page: page.page + 1 })}
+          >
+            Next
+          </button>
         </div>
       </div>
     </>
