@@ -6,7 +6,11 @@ const Navbar = () => {
   return (
     <nav className="flex justify-between border-b border-b-slate-300 bg-slate-50 px-4 py-6">
       <div>
-        <Link to="/">{user} </Link>
+        <Link to="/">
+          <p className="text-2xl font-bold text-blue-400 text-shadow-2xs">
+            BlogSpace
+          </p>
+        </Link>
       </div>
       <div>
         <Link
