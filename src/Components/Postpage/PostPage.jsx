@@ -60,7 +60,7 @@ const PostPage = () => {
           {updating ? (
             <div className="mx-4 my-2 flex cursor-not-allowed items-center justify-center rounded border border-blue-500 bg-blue-400 px-2 py-1 font-bold">
               {" "}
-              <div class="mr-2 ml-1 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+              <div className="mr-2 ml-1 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
               {visibility ? (
                 <p className="font-bold text-white">Hiding...</p>
               ) : (
