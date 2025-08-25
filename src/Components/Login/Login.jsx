@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Contexts/AuthContext";
 
 const Login = () => {
+  const { setUser } = useAuth();
   const {
     register,
     handleSubmit,
@@ -12,9 +14,10 @@ const Login = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    const url = `http://localhost:3000/login`;
+    const url = `http://localhost:3000/auth/login`;
     try {
-      await axios.post(url, data, { withCredentials: true });
+      const res = await axios.post(url, data, { withCredentials: true });
+      setUser(res.data.user);
       navigate("/");
     } catch (err) {
       console.log(err);
