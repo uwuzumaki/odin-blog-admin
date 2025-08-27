@@ -5,6 +5,7 @@ import axios from "axios";
 const PostPage = () => {
   const location = useLocation();
   const [post, setPost] = useState("");
+  const [comments, setComments] = useState("");
   const [visibility, setVisibility] = useState("");
   const [loadingPost, setLoadingPost] = useState(false);
   const [updating, setUpdating] = useState(false);
@@ -20,6 +21,16 @@ const PostPage = () => {
       console.log(err);
     } finally {
       setLoadingPost(false);
+    }
+  };
+
+  const getComments = async (currentLocation) => {
+    const url = `http://localhost:3000/comment/${currentLocation}`;
+    try {
+      const data = await axios.get(url);
+      setComments(data.data);
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -39,6 +50,7 @@ const PostPage = () => {
 
   useEffect(() => {
     getPost(location.pathname.split("/")[2]);
+    getComments(location.pathname.split("/")[2]);
     //eslint-disable-next-line
   }, []);
 
@@ -49,7 +61,7 @@ const PostPage = () => {
           &lsaquo;-Back
         </Link>
       </div>
-      <div className="flex h-1/1 flex-1 flex-col items-center justify-center">
+      <div className="flex h-1/1 flex-1 items-center justify-center">
         <div className="flex max-h-[40vh] min-h-[40vh] max-w-[40%] min-w-[40%] flex-col rounded-2xl border-blue-400 bg-slate-50 shadow shadow-blue-800">
           {loadingPost ? (
             <div className="flex flex-1 items-center justify-center">
@@ -87,6 +99,18 @@ const PostPage = () => {
               </div>
             )}
           </div>
+        </div>
+        <div>
+          {comments.length > 0 ? (
+            <>
+              {" "}
+              {comments.map((comment) => (
+                <div>{comment.content}</div>
+              ))}
+            </>
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
     </>
