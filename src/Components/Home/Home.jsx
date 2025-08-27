@@ -16,7 +16,6 @@ const Home = () => {
     try {
       setLoading(true);
       const posts = await axios.get(url);
-      console.log(posts);
       setAllPosts(posts.data.posts);
       setPage({ page: posts.data.page, totalPages: posts.data.totalPages });
     } catch (err) {

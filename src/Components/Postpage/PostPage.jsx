@@ -48,6 +48,19 @@ const PostPage = () => {
     }
   };
 
+  const deleteComment = async (commentID) => {
+    const url = `http://localhost:3000/comment/${commentID}`;
+    try {
+      await axios.delete(url, { withCredentials: true });
+      const newComments = comments.filter(
+        (comment) => comment.id !== commentID,
+      );
+      setComments(newComments);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getPost(location.pathname.split("/")[2]);
     getComments(location.pathname.split("/")[2]);
@@ -105,7 +118,12 @@ const PostPage = () => {
             <>
               {" "}
               {comments.map((comment) => (
-                <div>{comment.content}</div>
+                <div className="flex" key={comment.id}>
+                  <p>{comment.content}</p>
+                  <button onClick={() => deleteComment(comment.id)}>
+                    Delete
+                  </button>
+                </div>
               ))}
             </>
           ) : (
