@@ -21,3 +21,4 @@ API: https://github.com/uwuzumaki/odin-blog-api
 - The ability to edit posts
 - The ability to upload images
 - Posts to have their tags rendered correctly.
+- Error handling pages
