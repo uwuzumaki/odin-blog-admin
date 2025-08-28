@@ -75,7 +75,7 @@ const PostPage = () => {
         </Link>
       </div>
       <div className="flex h-1/1 flex-1 items-center justify-center">
-        <div className="flex max-h-[40vh] min-h-[40vh] max-w-[40%] min-w-[40%] flex-col rounded-2xl border-blue-400 bg-slate-50 shadow shadow-blue-800">
+        <div className="m-4 flex max-h-[40vh] min-h-[40vh] max-w-[40%] min-w-[40%] flex-col rounded-2xl border-blue-400 bg-slate-50 shadow shadow-blue-800">
           {loadingPost ? (
             <div className="flex flex-1 items-center justify-center">
               <p className="animate-pulse">Loading Post...</p>
@@ -85,7 +85,7 @@ const PostPage = () => {
               <p className="border-b-1 border-blue-400 px-4 py-2">
                 {post.title}
               </p>
-              <p className="flex-1 overflow-y-auto px-4 py-4">{post.content}</p>
+              <p className="flex-1 overflow-y-auto p-4">{post.content}</p>
             </>
           )}
           <div className="flex items-center justify-between justify-self-end border-t-1 border-blue-400 pt-4 pb-2">
@@ -113,21 +113,33 @@ const PostPage = () => {
             )}
           </div>
         </div>
-        <div>
+        <div className="m-4 flex max-h-[40vh] min-h-[40vh] max-w-[40%] min-w-[40%] flex-col gap-[1px] overflow-y-auto rounded-2xl border-blue-400 bg-slate-500 shadow shadow-blue-800">
+          <div className="mb-[-1px] border-b-1 border-blue-400 bg-slate-50 px-4 py-2">
+            Comments
+          </div>
           {comments.length > 0 ? (
             <>
-              {" "}
               {comments.map((comment) => (
-                <div className="flex" key={comment.id}>
-                  <p>{comment.content}</p>
-                  <button onClick={() => deleteComment(comment.id)}>
+                <div
+                  className="flex items-center justify-between bg-slate-50"
+                  key={comment.id}
+                >
+                  <div className="pt-2 pl-2">
+                    <p className="font-bold">{comment.name}</p>
+                    <p className="px-4 py-2">{comment.content}</p>
+                  </div>
+
+                  <button
+                    className="cursor-pointer rounded-4xl border border-red-500 bg-red-400 px-4 py-2 text-white"
+                    onClick={() => deleteComment(comment.id)}
+                  >
                     Delete
                   </button>
                 </div>
               ))}
             </>
           ) : (
-            <div></div>
+            <p>This post has no comments</p>
           )}
         </div>
       </div>
