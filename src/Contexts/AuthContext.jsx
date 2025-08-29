@@ -10,7 +10,7 @@ export const AuthProvider = ({ initialUser, children }) => {
   const navigate = useNavigate();
 
   const logout = async () => {
-    const url = `http://localhost:3000/auth/logout`;
+    const url = `${import.meta.env.VITE_URL}/auth/logout`;
     try {
       await axios.get(url, { withCredentials: true });
       setUser(null);

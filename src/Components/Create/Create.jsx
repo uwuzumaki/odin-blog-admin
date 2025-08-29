@@ -20,7 +20,7 @@ const Create = () => {
   });
 
   const submitPost = async (data) => {
-    const url = "http://localhost:3000/post";
+    const url = `${import.meta.env.VITE_URL}/post`;
     const postData = { title: data.title, content: data.content };
     try {
       const post = await axios.post(url, postData, { withCredentials: true });

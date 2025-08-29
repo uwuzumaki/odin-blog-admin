@@ -11,7 +11,7 @@ const PostPage = () => {
   const [updating, setUpdating] = useState(false);
 
   const getPost = async (currentLocation) => {
-    const url = `http://localhost:3000/post/${currentLocation}`;
+    const url = `${import.meta.env.VITE_URL}/post/${currentLocation}`;
     try {
       setLoadingPost(true);
       const data = await axios.get(url);
@@ -25,7 +25,7 @@ const PostPage = () => {
   };
 
   const getComments = async (currentLocation) => {
-    const url = `http://localhost:3000/comment/${currentLocation}`;
+    const url = `${import.meta.env.VITE_URL}/comment/${currentLocation}`;
     try {
       const data = await axios.get(url);
       setComments(data.data);
@@ -35,7 +35,7 @@ const PostPage = () => {
   };
 
   const toggleVis = async (currentLocation) => {
-    const url = `http://localhost:3000/post/${currentLocation}`;
+    const url = `${import.meta.env.VITE_URL}/post/${currentLocation}`;
     try {
       setUpdating(true);
       const data = await axios.put(url, {}, { withCredentials: true });
@@ -49,7 +49,7 @@ const PostPage = () => {
   };
 
   const deleteComment = async (commentID) => {
-    const url = `http://localhost:3000/comment/${commentID}`;
+    const url = `${import.meta.env.VITE_URL}/comment/${commentID}`;
     try {
       await axios.delete(url, { withCredentials: true });
       const newComments = comments.filter(

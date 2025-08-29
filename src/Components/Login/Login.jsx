@@ -15,7 +15,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    const url = `http://localhost:3000/auth/login`;
+    const url = `${import.meta.env.VITE_URL}/auth/login`;
     try {
       const res = await axios.post(url, data, { withCredentials: true });
       setUser(res.data.user);

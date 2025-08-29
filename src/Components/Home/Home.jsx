@@ -12,7 +12,7 @@ const Home = () => {
   const currentPage = parseInt(searchParams.get("page") || "1");
 
   const getPosts = async () => {
-    const url = `http://localhost:3000/post?page=${currentPage}`;
+    const url = `${import.meta.env.VITE_URL}/post?page=${currentPage}`;
     try {
       setLoading(true);
       const posts = await axios.get(url);
