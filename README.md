@@ -5,6 +5,8 @@ The administration page for the Blog Api Project.
 User page: https://github.com/uwuzumaki/odin-blog-user
 API: https://github.com/uwuzumaki/odin-blog-api
 
+Front end deploy: https://leafy-begonia-09ba39.netlify.app/
+
 ## Features
 
 - Logging in and out
